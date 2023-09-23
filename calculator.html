@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/mdb.min.css">
+    <link rel="stylesheet" href="./js/mdb.min.js">
+    <style>
+        .btn{
+            background:linear-gradient(20deg,red,blue);
+            border-radius: 40px;
+            color: rgb(255, 255, 255);
+            width: 4rem;
+            height: 3rem;
+            font-size: 20px;
+        }
+        #equal{
+            height: 18rem;
+
+        }
+        .table{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-top: 10rem;
+        }
+        #outputValue{
+            width: 25rem;
+            height: 2.8rem;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table class="table">
+           <tr>
+            <th colspan="4"> <input type="text"  id="outputValue"></th>
+           </tr>
+            <tr>
+                <td><button class="btn" value="+">+</button></td>
+                <td><button class="btn" value="-">-</button></td>
+                <td><button class="btn" value="*">*</button></td>
+                <td><button class="btn" value="/">/</button></td>   
+            </tr>
+           
+            <tr>
+                <td><button class="btn" value="3">3</button></td>
+                <td><button class="btn" value="2">2</button></td>
+                <td><button class="btn" value="1">1</button></td>
+                <td rowspan="4"><button class="btn" id="equal">=</button></td>   
+            </tr> 
+            <tr>
+                <td><button class="btn" value="6">6</button></td>
+                <td><button class="btn" value="5">5</button></td>
+                <td><button class="btn" value="4">4</button></td>
+                <!-- <td><button></button></td>    -->
+            </tr>
+            <tr>
+                <td><button class="btn" value="9">9</button></td>
+                <td><button class="btn" value="8">8</button></td>
+                <td><button class="btn" value="7">7</button></td>
+                <!-- <td><button></button></td>    -->
+            </tr>
+            <tr>
+                <td><button class="btn" value="0">0</button></td>
+                <td><button class="btn" value=".">.</button></td>
+                <td><button class="btn" value="clear">AC</button></td>
+                <!-- <td><button></button></td>    -->
+            </tr>
+            
+        </table>
+    </div>
+    <script>
+         let str="";
+        let buttons = document.querySelectorAll('.btn');
+        Array.from(buttons).forEach((button)=>{
+            button.addEventListener('click',(e)=>{
+                if(e.target.innerHTML == "="){
+                    str = eval(str);
+                    document.querySelector('#outputValue').value = str;
+                }
+                else if(e.target.innerHTML == "AC"){
+                    str = " "
+                    document.getElementById("outputValue").value = str
+                }
+                else{
+                    console.log(e.target);
+                str= str + e.target.innerHTML;
+                document.querySelector('#outputValue').value = str;  
+                }
+                
+            })
+        })
+    
+
+    </script>
+</body>
+</html>
